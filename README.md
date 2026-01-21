@@ -1,21 +1,29 @@
 ## Area-Based Retrofit Potential in Camden
 
 ### Context
-The UK has established the ambitious target of reducing greenhouse gas emissions by at least 80% by 2050. Across the country - and especially in London - there is a substantial stock of older, energy-inefficient housing, which generates high levels of carbon emissions. Although recent years have seen the rollout of subsidized loan programs, direct grants for vulnerable social groups, and new obligations for energy companies to participate in retrofit schemes, the pace of housing retrofit remains low. To address this issue, some local areas have adopted mass retrofit strategies where groups of similar buildings are upgraded together, optimizing purchasing power, logistics, and attractiveness to suppliers (for example, this practice has been piloted in London’s Hammersmith & Fulham and Lewisham). In this research, I investigate the potential for area-based retrofit in Camden by clustering nearby buildings using energy- and fabric-related characteristics to highlight candidate groups for coordinated upgrades. Such an approach could support targeted retrofit delivery, helping to reduce carbon emissions while also lowering households’ energy bills.
+The UK’s Climate Change Act initially set a legally binding target to reduce greenhouse gas emissions by at least 80% by 2050, which has since been strengthened to a net zero target for 2050. [UK_CCA80] [UK_CCC_NETZERO]
+Across the country—and especially in London—there is a substantial stock of older, energy-inefficient housing. While a range of support mechanisms exist (including grants and supplier obligations such as the Energy Company Obligation), the pace of domestic retrofit remains well below what is required to meet long-term climate goals. [PARLIAMENT_RETROFIT] [OFGEM_ECO]
+To address this, some local areas have adopted place-based or programme-led approaches to retrofit, coordinating upgrades across groups of homes. This has been explored in the literature through area-based whole-house retrofit mapping and has been reflected in borough retrofit strategies (e.g., Hammersmith & Fulham and Lewisham). [GUPTA_GREGG_2020] [HF_RETROFIT_STRATEGY] [LEWISHAM_RETROFIT_STRATEGY]
+In this research, I investigate the potential for area-based retrofit in Camden by clustering nearby buildings using energy- and fabric-related characteristics to highlight candidate groups for coordinated upgrades. Such an approach could support targeted retrofit delivery, helping to reduce carbon emissions while also lowering households’ energy bills. [PARLIAMENT_RETROFIT] [IET_RETROFIT_2050]
 
-ССЫЛКИ ГДЕ?
+### Study Area: Camden (Rationale)
+Camden is selected as the study area for several reasons:
+- It has a large stock of older homes (e.g., more than half of flats were built over 100 years ago), which is often associated with higher retrofit need. [CAMDEN_CAP_SUMMARY]
+- It faces fuel poverty challenges (government statistics estimate 13.7% of households were in fuel poverty in 2019), making retrofit a social as well as an environmental priority. [CAMDEN_FUEL_POVERTY_STATS]
+- The borough has committed to becoming net zero carbon by 2030 and is implementing retrofit works to improve the energy efficiency of council homes. [CAMDEN_CAP_SUMMARY] [CAMDEN_RETROFIT]
 
 ### Methodology 
 
-А ОТКУДА ВОЗЬМЕМ ФАКТ ТОГО ЧТО РЕТРОФИТ УЖЕ БЫЛ?
+А ОТКУДА ВОЗЬМЕМ ФАКТ ТОГО ЧТО РЕТРОФИТ УЖЕ БЫЛ? ОБЯЗАТЕЛЬНО ЭТО УЧЕСТЬ В КАМДЕНЕ
 
 ### Data
-##### LBSMv2
-Описание: Данные о ключевых характеристиках зданий жилого назначения в Лондоне [Greater London Authority: LBSMv2]
+#### LBSMv2
+Описание: Данные о ключевых характеристиках зданий жилого назначения в Лондоне (source: [Greater London Authority: LBSMv2]). Они содеражат рассматриваемый район, включают в себя разлчиные необходимые для кластеризации признаки и обладают полнотой, так как используются как оригинальные так и смоделированные данные. Тем не менее, резальтаты аналитики необходимо проверить натурно в случае использования работы для policy, так как в ~10% синтетических данных по энергоэффективности зданий содержатся ошибки. 
 
-Coordinate Reference System (CRS) [London Datastore: LBSMv2 data dictionary]: 
+Coordinate Reference System (CRS) (source: [London Datastore: LBSMv2 data dictionary]): 
     - Datum (геодезическая основа): OSGB36 (Ordnance Survey of Great Britain 1936)
     - Projection: British National Grid (EPSG:27700)
+
 CRS хорошо подходит под задачу, и не требует перепроецирования, так как:
     - Проекция уже метрическая, что удобно, так как позволяет задавать легко интерпретируемые параметры для кластеризации
     - British National Grid спроектирована специально для GB, поэтому искажения масштаба небольшие 
@@ -39,7 +47,7 @@ CRS хорошо подходит под задачу, и не требует п
     - Roof type и др. 
 - Полнота данных. Текущие источники покрывают примерно половину информации о зданиях, поэтому в LBSMv2:
     - Используется сразу ряд готовых авторитетных датасетов (чтобы отсутствующая информация в одном источнике компенсировалась другим)
-    - Часть отсутвующих данных синтетически воссоздана на основе снепшота данных 2024 года. Для этого использовалась decision tree boosting algorithm как для задач регрессии (численные переменные), так и классификации (для категориальных переменных). Среди смоделированных переменных [London Datastore: LBSMv2 description]:
+    - Часть отсутвующих данных синтетически воссоздана на основе снепшота данных 2024 года. Для этого использовалась decision tree boosting algorithm как для задач регрессии (численные переменные), так и классификации (для категориальных переменных). Среди смоделированных переменных (source: [London Datastore: LBSMv2 description]):
         - Property type & built form
         - Floor area & number of habitable rooms 
         - Property tenure 
@@ -59,18 +67,13 @@ CRS хорошо подходит под задачу, и не требует п
 Недостатки:
 - "The individual properties within these ‘search areas’ will then need to be surveyed as part of the detailed design of any retrofit measures. This is needed because EPCs do not contain sufficient detail for this installation design and although modelled EPC values have high accuracy (80 - 90%) they are not 100% accurate."
 
-Общая оценка: 
-НАПИСАТЬ? 
-
-ПЕРЕВЕСТИ КРАСИВО!
-
-##### EPC
+#### EPC
 НАПИСАТЬ, ЧТО ИСПОЛЬЗУЮ, ПОТОМУ ЧТО ХОЧУ САМЫЕ СВЕЖИЕ ДАННЫЕ, ГДЕ ОНИ ЕСТЬ 
 
-##### Camden Open Data
+#### Camden Open Data
 НАПИСАТЬ, ЧТО ИСПОЛЬЗУЮ ЭТИ ДАННЫЕ ДЛЯ ВЫЯВЛЕНИЕ ГЕОМЕТРИИ И ВИЗУАЛИЗАЦИИ
 
-##### Какие-то еще данные для basemap
+#### Какие-то еще данные для basemap
 НАПИСАТЬ, КАКИЕ ДАННЫЕ ДЛЯ BASEMAP
 
 ### Feature Selection
@@ -98,6 +101,18 @@ CONSERVATION AREA & RETROFIT ВМЕСТЕ УЖИВАЮТСЯ?
 - шаги подготовки
 
 ### References
-[Greater London Authority: LBSMv2]: https://www.gov.uk/algorithmic-transparency-records/greater-london-authority-london-building-stock-model-2?utm_source=chatgpt.com
-[London Datastore: LBSMv2 description]: https://data.london.gov.uk/blog/london-building-stock-model-2/?utm_source=chatgpt.com
+[UK_CCA80]: https://www.gov.uk/guidance/climate-change "UK Government: Climate Change Act target (80% by 2050 - historical)"
+[UK_CCC_NETZERO]: https://www.theccc.org.uk/climate-action/ "UK Climate Change Committee: Net Zero by 2050"
+[PARLIAMENT_RETROFIT]: https://publications.parliament.uk/pa/cm5901/cmselect/cmesnz/453/report.html "UK Parliament (ESNZ Committee): Retrofitting homes for net zero (2025)"
+[OFGEM_ECO]: https://www.ofgem.gov.uk/environmental-and-social-schemes/energy-company-obligation-eco "Ofgem: Energy Company Obligation (ECO)"
+[GUPTA_GREGG_2020]: https://radar.brookes.ac.uk/radar/file/7c6a1d16-757d-491b-909f-52cf8b0d5455/1/Domestic%20energy%20mapping%20for%20retrofit%20-%202020%20-%20Gupta%20Gregg.pdf "Gupta & Gregg (2020): Domestic Energy Mapping to Enable Area-Based Whole House Retrofits"
+[HF_RETROFIT_STRATEGY]: https://democracy.lbhf.gov.uk/documents/s131593/Appendix%201%20-%20HF%20Council%20Housing%20Retrofit%20Strategy.pdf "LB Hammersmith & Fulham: Council Housing Retrofit Strategy"
+[LEWISHAM_RETROFIT_STRATEGY]: https://lewisham.gov.uk/-/media/services/housing/housing-retrofit-strategy-empowering-communities-through-retrofitting.pdf "LB Lewisham: Housing Retrofit Strategy"
+[IET_RETROFIT_2050]: https://www.theiet.org/media/8758/retrofit.pdf "IET: Scaling Up Retrofit 2050"
+[CAMDEN_CAP_SUMMARY]: https://www.camden.gov.uk/documents/20142/344816220/Climate%2BAction%2BPlan%2BCondensed%2BSummary_A5.pdf "Camden Climate Action Plan Summary"
+[CAMDEN_FUEL_POVERTY_STATS]: https://news.camden.gov.uk/keeping-warm-and-well-this-winter-in-camden/ "Camden Council: fuel poverty stats (2019 estimate)"
+[CAMDEN_RETROFIT]: https://www.camden.gov.uk/retrofit "Camden Council: Camden Retrofit programme"
+
+[Greater London Authority: LBSMv2]: https://www.gov.uk/algorithmic-transparency-records/greater-london-authority-london-building-stock-model-2
+[London Datastore: LBSMv2 description]: https://data.london.gov.uk/blog/london-building-stock-model-2
 [London Datastore: LBSMv2 data dictionary]: https://data.london.gov.uk/dataset/london-building-stock-model-2-lbsm-2-2k55d
