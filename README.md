@@ -1,16 +1,20 @@
 ## Area-Based Retrofit Potential in Camden
 
 ### Context
-The UK’s Climate Change Act initially set a legally binding target to reduce greenhouse gas emissions by at least 80% by 2050, which has since been strengthened to a net zero target for 2050. [UK_CCA80] [UK_CCC_NETZERO]
-Across the country—and especially in London—there is a substantial stock of older, energy-inefficient housing. While a range of support mechanisms exist (including grants and supplier obligations such as the Energy Company Obligation), the pace of domestic retrofit remains well below what is required to meet long-term climate goals. [PARLIAMENT_RETROFIT] [OFGEM_ECO]
-To address this, some local areas have adopted place-based or programme-led approaches to retrofit, coordinating upgrades across groups of homes. This has been explored in the literature through area-based whole-house retrofit mapping and has been reflected in borough retrofit strategies (e.g., Hammersmith & Fulham and Lewisham). [GUPTA_GREGG_2020] [HF_RETROFIT_STRATEGY] [LEWISHAM_RETROFIT_STRATEGY]
-In this research, I investigate the potential for area-based retrofit in Camden by clustering nearby buildings using energy- and fabric-related characteristics to highlight candidate groups for coordinated upgrades. Such an approach could support targeted retrofit delivery, helping to reduce carbon emissions while also lowering households’ energy bills. [PARLIAMENT_RETROFIT] [IET_RETROFIT_2050]
+### Context
+The UK’s Climate Change Act initially set a legally binding target to reduce greenhouse gas emissions by at least 80% by 2050, which has since been strengthened to a net zero target for 2050. *(Sources: [UK CCA (historical target)][UK_CCA80], [UK CCC — Net Zero][UK_CCC_NETZERO]).*
+
+Across the country—and especially in London—there is a substantial stock of older, energy-inefficient housing. While a range of support mechanisms exist (including grants and supplier obligations such as the Energy Company Obligation), the pace of domestic retrofit remains well below what is required to meet long-term climate goals. *(Sources: [UK Parliament report][PARLIAMENT_RETROFIT], [Ofgem — ECO][OFGEM_ECO]).*
+
+To address this, some local areas have adopted place-based or programme-led approaches to retrofit, coordinating upgrades across groups of homes. This has been explored in the literature through area-based whole-house retrofit mapping and has been reflected in borough retrofit strategies (e.g., Hammersmith & Fulham and Lewisham). *(Sources: [Gupta & Gregg, 2020][GUPTA_GREGG_2020], [H&F strategy][HF_RETROFIT_STRATEGY], [Lewisham strategy][LEWISHAM_RETROFIT_STRATEGY]).*
+
+In this research, I investigate the potential for area-based retrofit in Camden by clustering nearby buildings using energy- and fabric-related characteristics to highlight candidate groups for coordinated upgrades. Such an approach could support targeted retrofit delivery, helping to reduce carbon emissions while also lowering households’ energy bills. *(Sources: [UK Parliament report][PARLIAMENT_RETROFIT], [IET — Scaling Up Retrofit 2050][IET_RETROFIT_2050]).*
 
 ### Study Area: Camden (Rationale)
 Camden is selected as the study area for several reasons:
-- It has a large stock of older homes (e.g., more than half of flats were built over 100 years ago), which is often associated with higher retrofit need. [CAMDEN_CAP_SUMMARY]
-- It faces fuel poverty challenges (government statistics estimate 13.7% of households were in fuel poverty in 2019), making retrofit a social as well as an environmental priority. [CAMDEN_FUEL_POVERTY_STATS]
-- The borough has committed to becoming net zero carbon by 2030 and is implementing retrofit works to improve the energy efficiency of council homes. [CAMDEN_CAP_SUMMARY] [CAMDEN_RETROFIT]
+- It has a large stock of older homes (e.g., more than half of flats were built over 100 years ago), which is often associated with higher retrofit need. *(Source: [Camden CAP summary][CAMDEN_CAP_SUMMARY]).*
+- It faces fuel poverty challenges (government statistics estimate 13.7% of households were in fuel poverty in 2019), making retrofit a social as well as an environmental priority. *(Source: [Camden fuel poverty stats][CAMDEN_FUEL_POVERTY_STATS]).*
+- The borough has committed to becoming net zero carbon by 2030 and is implementing retrofit works to improve the energy efficiency of council homes. *(Sources: [Camden CAP summary][CAMDEN_CAP_SUMMARY], [Camden Retrofit][CAMDEN_RETROFIT]).*
 
 ### Methodology 
 
