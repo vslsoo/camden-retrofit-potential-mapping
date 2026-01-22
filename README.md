@@ -3,11 +3,11 @@
 ## Context
 The UK’s Climate Change Act initially set a legally binding target to reduce greenhouse gas emissions by at least 80% by 2050, which has since been strengthened to a net zero target for 2050. *(Sources: [UK CCA (historical target)][UK_CCA80], [UK CCC - Net Zero][UK_CCC_NETZERO]).*
 
-Across the country - and especially in London - there is a substantial stock of older, energy-inefficient housing. While a range of support mechanisms exist (including grants and supplier obligations such as the Energy Company Obligation), the pace of domestic retrofit remains well below what is required to meet long-term climate goals. *(Sources: [UK Parliament report][PARLIAMENT_RETROFIT], [Ofgem - ECO][OFGEM_ECO]).*
+Across the country - and especially in London - there is a substantial stock of older, energy-inefficient housing. While a range of support mechanisms exist (including grants and supplier obligations such as the Energy Company Obligation), the pace of domestic retrofit remains well below what is required to meet long-term climate goals. *(Sources: [UK Parliament - Retrofitting homes for net zero][UKP_RETROFIT], [Ofgem - ECO][OFGEM_ECO]).*
 
 To address this, some local areas have adopted place-based or programme-led approaches to retrofit, coordinating upgrades across groups of homes. This has been explored in the literature through area-based whole-house retrofit mapping and has been reflected in borough retrofit strategies (e.g., Hammersmith & Fulham and Lewisham). *(Sources: [Gupta & Gregg, 2020][GUPTA_GREGG_2020], [H&F strategy][HF_RETROFIT_STRATEGY], [Lewisham strategy][LEWISHAM_RETROFIT_STRATEGY]).*
 
-In this research, I investigate the potential for area-based retrofit in Camden by clustering nearby buildings using energy- and fabric-related characteristics to highlight candidate groups for coordinated upgrades. Such an approach could support targeted retrofit delivery, helping to reduce carbon emissions while also lowering households’ energy bills. *(Sources: [UK Parliament report][PARLIAMENT_RETROFIT], [IET - Scaling Up Retrofit 2050][IET_RETROFIT_2050]).*
+In this research, I investigate the potential for area-based retrofit in Camden by clustering nearby buildings using energy- and fabric-related characteristics to highlight candidate groups for coordinated upgrades. Such an approach could support targeted retrofit delivery, helping to reduce carbon emissions while also lowering households’ energy bills. *(Sources: [UK Parliament - Retrofitting homes for net zero][UKP_RETROFIT], [IET - Scaling Up Retrofit 2050][IET_RETROFIT_2050]).*
 
 ## Study Area: Camden (Rationale)
 Camden is selected as the study area for several reasons:
@@ -18,9 +18,8 @@ Camden is selected as the study area for several reasons:
 ## Method
 
 > 🔴 **TODO / Notes**
-> - Where to download **LBSM2**, **EPC**, and **conservation areas** datasets?
+> - Where to download **LBSM2**, **EPC**, and **conservation areas** datasets? (next step)
 > - How should the data be preprocessed? (about EPC)
-> - How do we account for buildings in Camden that have already undergone retrofit? (next step)
 > - Overview of workflow + Clustering methodology (and how do we select the parameters?) + Feature set
 
 ---
@@ -29,32 +28,34 @@ Camden is selected as the study area for several reasons:
 
 In this project, retrofit need is operationalised as an EPC-based screening step that defines the candidate set for subsequent spatial clustering. Additional variables are used to profile candidate clusters and to prioritise interventions, rather than to define technical similarity directly.
 
-**Primary screening criterion (EPC).** A dwelling is included in the retrofit candidate set if its current EPC rating is Band D or below. This aligns with widely cited UK retrofit pathways that prioritise upgrading the lowest-performing stock first and aim to raise homes towards at least Band C. *(Sources: [UKGBC—Home Retrofit][UKGBC_HOME_RETROFIT], [UK Parliament—Retrofitting homes for net zero][UKP_RETROFIT]).*
+**Primary screening criterion (EPC).** A dwelling is included in the retrofit candidate set if its current EPC rating is Band D or below. This aligns with widely cited UK retrofit pathways that prioritise upgrading the lowest-performing stock first and aim to raise homes towards at least Band C. *(Sources: [UKGBC - Home Retrofit][UKGBC_HOME_RETROFIT], [UK Parliament - Retrofitting homes for net zero][UKP_RETROFIT]).*
 
 **Profiling indicators (retrofit potential and technical drivers).** EPC alone is not a complete descriptor of retrofit need, and current EPC metrics have recognised limitations for net-zero delivery. Candidate buildings and resulting spatial clusters are therefore profiled using:
-  - **EPC “efficiency gap”** (potential minus current EPC score, where available) to indicate unrealised improvement potential. *(Source: [CCC—EPC metrics reform annex][CCC_EPC_ANNEX]).*
+  - **EPC “efficiency gap”** (potential minus current EPC score, where available) to indicate unrealised improvement potential. *(Source: [CCC-EPC metrics reform annex][UK_CCC_NETZERO]).*
   - **Fabric and heating descriptors** to reflect that effective retrofit packages typically combine envelope measures with heating upgrades. Variables used:
     - Fabric: `wall_type`, `wall_insulation`, `roof_type`, `roof_insulation`, `glazing_type`
     - Heating: `main_heat_type`, `main_fuel_type`
-  *(Sources: [CCC—EPC metrics reform annex][CCC_EPC_ANNEX], [Gupta & Gregg, 2020][GUPTA_GREGG_2020], [UK Parliament—Retrofitting homes for net zero][UKP_RETROFIT]).*
+  *(Sources: [CCC-EPC metrics reform annex][UK_CCC_NETZERO], [Gupta & Gregg, 2020][GUPTA_GREGG_2020], [UK Parliament - Retrofitting homes for net zero][UKP_RETROFIT]).*
 
-**Equity lens (prioritisation overlay).** Socio-economic vulnerability (e.g., deprivation or fuel poverty proxies) is applied as a prioritisation overlay to support fair targeting of limited resources and to reflect the role of energy efficiency improvements in reducing heating costs for fuel-poor households. *(Source: [Fuel Poverty Strategy—Technical annex][FP_TECH_ANNEX]).*
-
----
-
-### Accounting for Existing Retrofit
-
----
+**Equity lens (prioritisation overlay).** Socio-economic vulnerability (e.g., deprivation or fuel poverty proxies) is applied as a prioritisation overlay to support fair targeting of limited resources and to reflect the role of energy efficiency improvements in reducing heating costs for fuel-poor households. *(Source: [Fuel Poverty Strategy-Technical annex][FP_TECH_ANNEX]).*
 
 ### Handling conservation areas
 
 In England, a conservation area is defined as “an area of special architectural or historic interest the character or appearance of which it is desirable to preserve or enhance.” *(Source: [PLBCA Act 1990, s.69][PLBCA_S69]).*
 
-In this study, properties located within conservation areas are excluded from the main clustering workflow. This scope decision is motivated by the fact that conservation-area designation typically introduces additional planning constraints on external alterations, which can materially change both the set of feasible retrofit measures and the associated delivery costs. Empirical evidence suggests that conservation-area regulations act as a barrier to energy-efficiency upgrades and are associated with lower retrofit investment. *(Source: [Fetzer, 2023][FETZER_2023]).* Complementary research on residential heritage retrofit further highlights that “standard” retrofit packages—especially those affecting the building exterior—may be unacceptable or infeasible in protected contexts, implying the need for a distinct pathway and measure set. *(Source: [Wise et al., 2021][WISE_2021]).*
+In this study, properties located within conservation areas are excluded from the main clustering workflow. This scope decision is motivated by the fact that conservation-area designation typically introduces additional planning constraints on external alterations, which can materially change both the set of feasible retrofit measures and the associated delivery costs. Empirical evidence suggests that conservation-area regulations act as a barrier to energy-efficiency upgrades and are associated with lower retrofit investment. *(Source: [Fetzer, 2023][FETZER_2023]).* Complementary research on residential heritage retrofit further highlights that “standard” retrofit packages-especially those affecting the building exterior-may be unacceptable or infeasible in protected contexts, implying the need for a distinct pathway and measure set. *(Source: [Wise et al., 2021][WISE_2021]).*
 
 The overarching aim of this project is to identify groups of homes that could plausibly receive a similar retrofit package at a comparable cost, improving attractiveness for delivery partners and potentially reducing costs for residents through coordinated implementation. Because buildings inside and outside conservation areas are likely to require different measure packages, permissions, and cost structures, they are treated separately in the present analysis. A natural extension of this work would be to model retrofit opportunities within conservation areas explicitly, using a constraint-aware approach (e.g., conservation-area-specific measure sets and planning pathways).
 
----
+### Accounting for existing retrofit interventions (limitation and future work)
+
+Some homes in Camden have already undergone retrofit, or are currently part of active retrofit programmes. Evidence of completed or planned interventions can be derived from (i) official borough documentation and (ii) EPC histories, although both sources have important limitations.
+
+First, Camden publishes programme-level evidence through council reports and procurement documentation. For example, the borough’s Climate Action Plan annual reviews and climate budget materials describe estate-scale and street-property retrofit projects (e.g., 5–7 Belsize Grove, Brookes Court, and batches of street properties). In addition, procurement notices provide site-level details (including the number of dwellings and indicative measures) for specific retrofit schemes. *(Sources: [Camden CAP Annual Review 2022–23][CAMDEN_CAP_REVIEW_22_23], [Camden Climate Budget 2024–25][CAMDEN_CLIMATE_BUDGET_24_25], [Contracts Finder-Belsize Grove retrofit works][CAMDEN_CONTRACTS_BELSIZE_GROVE]).*
+
+Second, previously retrofitted homes can sometimes be inferred from changes in EPC records over time (e.g., a substantial uplift in EPC score or changes in recorded fabric/heating descriptors). However, EPC presence and timing are not a reliable indicator of retrofit completion: EPCs are typically required when a dwelling is sold or let (and are valid for up to 10 years), so a “first” EPC may appear for reasons unrelated to retrofit. Moreover, research on EPC renewals shows that EPC ratings can change due to assessor practices, data-quality issues, or methodological factors, and therefore improvements in ratings do not always imply physical upgrades. *(Sources: [UK Gov-EPC technical notes][UK_EPC_TECH_NOTES], [UK Gov-EPC technical note (PDF)][UK_EPC_TECH_NOTE_PDF], [Yuan, 2023-EPC renewal analysis][YUAN_2023_EPC_RENEWAL]).*
+
+In policy-oriented applications, these signals could be integrated into targeting and scheduling logic-for example, excluding properties that are confirmed to be in current retrofit programmes, or explicitly incorporating already planned measures alongside physical need (e.g., EPC-based screening) and equity overlays (e.g., deprivation/fuel poverty proxies). In the present study, however, prior or ongoing retrofit is not modelled explicitly when defining priority groups; this is treated as a limitation and a clear direction for further work.
 
 <!-- ### Constraints and prioritisation (policy overlays)
 
@@ -71,8 +72,6 @@ The overarching aim of this project is to identify groups of homes that could pl
 **Description.** The London Building Stock Model v2 (LBSM2) is a building-level dataset describing key characteristics of London’s domestic housing stock, designed to support housing improvement and retrofit programmes. It provides broad coverage across London by combining observed information (where available) with modelled values to fill gaps and resolve inconsistencies. This makes LBSM2 well-suited for exploratory analysis and neighbourhood-level targeting; however, results should be treated as indicative when used for policy decisions and should be complemented by on-site surveys for detailed retrofit design.  
 *(Sources: [GLA Algorithmic Transparency Record][GLA_LBSM2], [London Datastore - LBSM2 overview][LDS_LBSM2_DESC]).*
 
----
-
 #### Coordinate Reference System (CRS)
 
 Building locations are provided as Easting/Northing in metres in OSGB36 / British National Grid (EPSG:27700).  
@@ -83,8 +82,6 @@ Building locations are provided as Easting/Northing in metres in OSGB36 / Britis
 CRS Suitability for Distance-Based Clustering: 
 - It is metre-based, so distance thresholds for clustering are directly interpretable (e.g., `eps = 100` ≈ 100 m).
 - British National Grid is a national projected CRS designed for Great Britain, so local-scale distortion is small for analyses within London.
-
----
 
 #### Dataset advantages
 
@@ -122,17 +119,15 @@ CRS Suitability for Distance-Based Clustering:
   - Current & potential EPC rating  
   *(Source: [London Datastore - LBSM2 overview][LDS_LBSM2_DESC]).*
 
-- **Preprocessing and harmonisation.** Where multiple records exist for the same property (e.g., multiple EPC assessments), values are harmonised using rules such as selecting the most recent record, the most frequent category, or an average—depending on the attribute. Some missing quantities (e.g., energy consumption) are estimated using alternative information such as fuel bill data.  
+- **Preprocessing and harmonisation.** Where multiple records exist for the same property (e.g., multiple EPC assessments), values are harmonised using rules such as selecting the most recent record, the most frequent category, or an average-depending on the attribute. Some missing quantities (e.g., energy consumption) are estimated using alternative information such as fuel bill data.  
   *(Sources: [London Datastore - LBSM2 overview][LDS_LBSM2_DESC], [GLA Algorithmic Transparency Record][GLA_LBSM2]).*
 
 - **External expert review.** Model outputs have been independently reviewed by Buro Happold at an area level, focusing on attributes most relevant to likely uses, with the conclusion that the model performed well.  
   *(Source: [London Datastore - LBSM2 overview][LDS_LBSM2_DESC]).*
 
----
+#### Data limitations (important for policy use)
 
-#### Limitations (important for policy use)
-
-- **Design-level limitations (EPC granularity + model uncertainty).** LBSM2 is well-suited for screening and area-level targeting; however, individual properties still require on-site surveys for detailed retrofit design. This is because EPC records alone do not contain sufficient installation-level detail, and modelled EPC values—while reported as high-accuracy (80–90%) - are not 100% accurate.  
+- **Design-level limitations (EPC granularity + model uncertainty).** LBSM2 is well-suited for screening and area-level targeting; however, individual properties still require on-site surveys for detailed retrofit design. This is because EPC records alone do not contain sufficient installation-level detail, and modelled EPC values-while reported as high-accuracy (80–90%) - are not 100% accurate.  
   *(Sources: [GLA Algorithmic Transparency Record][GLA_LBSM2], [London Datastore - LBSM2 overview][LDS_LBSM2_DESC]).*
 
 - **Temporal currency (snapshot date).** LBSM2 represents a snapshot of London’s housing stock as of October 2024; therefore, EPC-related attributes may not capture updates recorded after that date. For analyses conducted in 2026, EPC-linked fields should ideally be refreshed using the latest EPC register extracts (where feasible), or this should be clearly stated as a limitation.  
@@ -150,13 +145,10 @@ CRS Suitability for Distance-Based Clustering:
 <!-- Link references -->
 [UKGBC_HOME_RETROFIT]: https://ukgbc.org/our-work/home-retrofit/
 [UKP_RETROFIT]: https://publications.parliament.uk/pa/cm5901/cmselect/cmesnz/453/report.html
-[CCC_EPC_ANNEX]: https://www.theccc.org.uk/wp-content/uploads/2023/02/Annex-Reform-of-domestic-EPC-rating-metrics-to-support-delivery-of-Net-Zero.pdf
-[GUPTA_GREGG_2020]: https://radar.brookes.ac.uk/radar/file/7c6a1d16-757d-491b-909f-52cf8b0d5455/1/Domestic%20energy%20mapping%20for%20retrofit%20-%202020%20-%20Gupta%20Gregg.pdf
 [FP_TECH_ANNEX]: https://www.gov.uk/government/publications/fuel-poverty-strategy-for-england/fuel-poverty-strategy-for-england-technical-annex
 
 [UK_CCA80]: https://www.gov.uk/guidance/climate-change 
 [UK_CCC_NETZERO]: https://www.theccc.org.uk/climate-action/ 
-[PARLIAMENT_RETROFIT]: https://publications.parliament.uk/pa/cm5901/cmselect/cmesnz/453/report.html 
 [OFGEM_ECO]: https://www.ofgem.gov.uk/environmental-and-social-schemes/energy-company-obligation-eco 
 [GUPTA_GREGG_2020]: https://radar.brookes.ac.uk/radar/file/7c6a1d16-757d-491b-909f-52cf8b0d5455/1/Domestic%20energy%20mapping%20for%20retrofit%20-%202020%20-%20Gupta%20Gregg.pdf 
 [HF_RETROFIT_STRATEGY]: https://democracy.lbhf.gov.uk/documents/s131593/Appendix%201%20-%20HF%20Council%20Housing%20Retrofit%20Strategy.pdf 
@@ -170,6 +162,13 @@ CRS Suitability for Distance-Based Clustering:
 [PLBCA_S69]: https://www.legislation.gov.uk/ukpga/1990/9/section/69
 [FETZER_2023]: https://wrap.warwick.ac.uk/id/eprint/173618/1/WRAP-regulatory-barriers-climate-action-evidence-from-conservation-areas-England-Fetzer-2023.pdf
 [WISE_2021]: https://journal-buildingscities.org/articles/10.5334/bc.94 
+
+[CAMDEN_CAP_REVIEW_22_23]: https://camden.moderngov.co.uk/documents/s116400/Appendix%201%20-%20Climate%20Action%20Plan%20Annual%20Review%2022-23.pdf
+[CAMDEN_CLIMATE_BUDGET_24_25]: https://www.camden.gov.uk/documents/d/guest/camden-climate-budget_24_25
+[CAMDEN_CONTRACTS_BELSIZE_GROVE]: https://www.contractsfinder.service.gov.uk/notice/ee1174ea-a932-4bb4-b07c-f3a59271890d
+[UK_EPC_TECH_NOTES]: https://www.gov.uk/government/publications/energy-performance-of-buildings-certificates-in-england-and-wales-technical-notes/energy-performance-of-buildings-certificates-in-england-and-wales-technical-notes
+[UK_EPC_TECH_NOTE_PDF]: https://assets.publishing.service.gov.uk/media/60acc26d8fa8f520c8946a23/Energy_Performance_of_Buildings_Certificates_technical_note.pdf
+[YUAN_2023_EPC_RENEWAL]: https://www.sciencedirect.com/science/article/pii/S0301421523001660
 
 [LDS_LBSM2_DESC]: https://data.london.gov.uk/blog/london-building-stock-model-2
 [LDS_LBSM2_DATA]: https://data.london.gov.uk/dataset/london-building-stock-model-2-lbsm-2-2k55d
