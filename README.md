@@ -24,6 +24,16 @@ Camden is selected as the study area for several reasons:
 > - How do we account for buildings in Camden that have already undergone retrofit?
 > - Overview of workflow + Clustering methodology + Feature set
 
+### Handling conservation areas
+
+In England, a conservation area is defined as “an area of special architectural or historic interest the character or appearance of which it is desirable to preserve or enhance.” *(Source: [PLBCA Act 1990, s.69][PLBCA_S69]).*
+
+In this study, properties located within conservation areas are excluded from the main clustering workflow. This scope decision is motivated by the fact that conservation-area designation typically introduces additional planning constraints on external alterations, which can materially change both the set of feasible retrofit measures and the associated delivery costs. Empirical evidence suggests that conservation-area regulations act as a barrier to energy-efficiency upgrades and are associated with lower retrofit investment. *(Source: [Fetzer, 2023][FETZER_2023]).* Complementary research on residential heritage retrofit further highlights that “standard” retrofit packages—especially those affecting the building exterior—may be unacceptable or infeasible in protected contexts, implying the need for a distinct pathway and measure set. *(Source: [Wise et al., 2021][WISE_2021]).*
+
+The overarching aim of this project is to identify groups of homes that could plausibly receive a similar retrofit package at a comparable cost, improving attractiveness for delivery partners and potentially reducing costs for residents through coordinated implementation. Because buildings inside and outside conservation areas are likely to require different measure packages, permissions, and cost structures, they are treated separately in the present analysis. A natural extension of this work would be to model retrofit opportunities within conservation areas explicitly, using a constraint-aware approach (e.g., conservation-area-specific measure sets and planning pathways).
+
+---
+
 <!-- 
 ### Feature selection (for clustering)
 
@@ -55,14 +65,14 @@ To define “similarity” for area-based retrofit delivery, features were selec
 
 ---
 
-### Coordinate Reference System (CRS)
+## Coordinate Reference System (CRS)
 
 Building locations are provided as Easting/Northing in metres in OSGB36 / British National Grid (EPSG:27700).  
 - **Datum:** OSGB36 (Ordnance Survey of Great Britain 1936)  
 - **Projected CRS:** British National Grid (EPSG:27700)  
 *(Sources: [LBSM2 Data Dictionary][LBSM2_DATA_DICTIONARY], [London Datastore dataset page][LDS_LBSM2_DATA]).*
 
-**CRS Suitability for Distance-Based Clustering**: 
+CRS Suitability for Distance-Based Clustering: 
 - It is metre-based, so distance thresholds for clustering are directly interpretable (e.g., `eps = 100` ≈ 100 m).
 - British National Grid is a national projected CRS designed for Great Britain, so local-scale distortion is small for analyses within London.
 
@@ -79,8 +89,8 @@ Building locations are provided as Easting/Northing in metres in OSGB36 / Britis
 - **Recency / historical currency.** LBSM2 represents a snapshot as of October 2024 and supersedes the earlier LBSM version.  
   *(Source: [London Datastore—LBSM2 dataset page][LDS_LBSM2_DATA]).*
 
-- **Reported model performance.** The Algorithmic Transparency Record reports an overall output accuracy of **87%** (noting that performance varies by variable and is reported per attribute in the accompanying outputs).  
-  *(Source: [Greater London Authority: LBSMv2][Greater London Authority: LBSMv2]).*
+- **Reported model performance.** The Algorithmic Transparency Record reports an overall output accuracy of 87% (noting that performance varies by variable and is reported per attribute in the accompanying outputs).  
+  *(Source: [London Datastore—LBSM2 overview][LDS_LBSM2_DESC]).*
 
 - **Authoritative composite inputs** LBSM2 integrates multiple sources into a consistent property-level model, with UPRN used as a key linkage identifier. Inputs referenced include EPC, Ordnance Survey address/building context, Census 2021 constraints, Land Registry data, and building-age information from sources such as Colouring London.  
   *(Sources: [London Datastore—LBSM2 overview][LDS_LBSM2_DESC], [GLA Algorithmic Transparency Record][GLA_LBSM2]).*
@@ -142,6 +152,10 @@ Building locations are provided as Easting/Northing in metres in OSGB36 / Britis
 [CAMDEN_FUEL_POVERTY_STATS]: https://news.camden.gov.uk/keeping-warm-and-well-this-winter-in-camden/ 
 [CAMDEN_RETROFIT]: https://www.camden.gov.uk/retrofit 
 [GLA_LBSM2]: https://www.gov.uk/algorithmic-transparency-records/greater-london-authority-london-building-stock-model-2
+
+[PLBCA_S69]: https://www.legislation.gov.uk/ukpga/1990/9/section/69
+[FETZER_2023]: https://wrap.warwick.ac.uk/id/eprint/173618/1/WRAP-regulatory-barriers-climate-action-evidence-from-conservation-areas-England-Fetzer-2023.pdf
+[WISE_2021]: https://journal-buildingscities.org/articles/10.5334/bc.94 
 
 [LDS_LBSM2_DESC]: https://data.london.gov.uk/blog/london-building-stock-model-2
 [LDS_LBSM2_DATA]: https://data.london.gov.uk/dataset/london-building-stock-model-2-lbsm-2-2k55d
