@@ -1,4 +1,4 @@
-## Area-Based Retrofit Potential in Camden
+# Area-Based Retrofit Potential in Camden
 
 ## Context
 The UK’s Climate Change Act initially set a legally binding target to reduce greenhouse gas emissions by at least 80% by 2050, which has since been strengthened to a net zero target for 2050. *(Sources: [UK CCA (historical target)][UK_CCA80], [UK CCC - Net Zero][UK_CCC_NETZERO]).*
@@ -18,9 +18,11 @@ Camden is selected as the study area for several reasons:
 ## Method
 
 > 🔴 **TODO / Notes**
+> - Definitions of the main concepts
+> - Overview of workflow
 > - Where to download **LBSM2**, **EPC**, and **conservation areas** datasets? (next step)
 > - How should the data be preprocessed? (about EPC)
-> - Overview of workflow + Clustering methodology (and how do we select the parameters?) + Feature set
+> - Clustering methodology (and how do we select the parameters?) + Feature set (again?)
 
 ---
 
@@ -142,7 +144,7 @@ CRS Suitability for Distance-Based Clustering:
 
 ---
 
-<!-- Link references -->
+<!-- Link references - check the articles -->
 [UKGBC_HOME_RETROFIT]: https://ukgbc.org/our-work/home-retrofit/
 [UKP_RETROFIT]: https://publications.parliament.uk/pa/cm5901/cmselect/cmesnz/453/report.html
 [FP_TECH_ANNEX]: https://www.gov.uk/government/publications/fuel-poverty-strategy-for-england/fuel-poverty-strategy-for-england-technical-annex
